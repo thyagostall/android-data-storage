@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DataStorageDbHelper extends SQLiteOpenHelper {
 
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_FILENAME = "datastorage.db";
+
     private static final String TEXT_TYPE = " TEXT";
     private static final String INTEGER_TYPE = " INTEGER";
 
@@ -43,8 +46,8 @@ public class DataStorageDbHelper extends SQLiteOpenHelper {
     private static final String DELETE_SAMPLE_DATA_AUTHOR =
             String.format(DELETE_TABLE, DataStorageContract.SampleDataAuthorEntry.TABLE_NAME);
 
-    public DataStorageDbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DataStorageDbHelper(Context context) {
+        super(context, DATABASE_FILENAME, null, DATABASE_VERSION);
     }
 
     @Override
