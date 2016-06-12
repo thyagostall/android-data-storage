@@ -1,4 +1,6 @@
-package com.thyago.datastorage.entity;
+package com.thyago.datastorage.data;
+
+import com.thyago.datastorage.entity.BaseEntity;
 
 /**
  * Created by thyago on 6/3/16.

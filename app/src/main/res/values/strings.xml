@@ -6,4 +6,8 @@
     <string name="author_name">Author name</string>
     <string name="save">Save</string>
     <string name="data_saved">The data was saved.</string>
+    <string name="authors">Authors</string>
+    <string name="title">Title</string>
+    <string name="text">Text</string>
+    <string name="author">Author</string>
 </resources>

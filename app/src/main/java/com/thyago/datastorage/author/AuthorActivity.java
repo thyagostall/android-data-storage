@@ -1,19 +1,15 @@
 package com.thyago.datastorage.author;
 
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.thyago.datastorage.OperationFinishedListener;
 import com.thyago.datastorage.R;
-import com.thyago.datastorage.DataModel;
-import com.thyago.datastorage.entity.DataEntity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".author.AuthorActivity"></activity>
+        <activity android:name=".author.AuthorActivity" />
+        <activity android:name=".data.DataActivity"></activity>
     </application>
 
 </manifest>

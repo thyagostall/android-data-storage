@@ -10,7 +10,9 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.thyago.datastorage.author.AuthorActivity;
-import com.thyago.datastorage.entity.DataEntity;
+import com.thyago.datastorage.data.DataActivity;
+import com.thyago.datastorage.data.DataEntity;
+import com.thyago.datastorage.data.DataModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,15 +62,23 @@ public class DataStorageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.action_insert:
-                insertItem();
+            case R.id.action_insert_data:
+                insertData();
+                return true;
+            case R.id.action_authors:
+                authors();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void insertItem() {
+    private void insertData() {
+        Intent intent = new Intent(this, DataActivity.class);
+        startActivity(intent);
+    }
+
+    public void authors() {
         Intent intent = new Intent(this, AuthorActivity.class);
         startActivityForResult(intent, AuthorActivity.INSERT_AUTHOR);
     }

@@ -1,4 +1,4 @@
-package com.thyago.datastorage;
+package com.thyago.datastorage.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 
-import com.thyago.datastorage.entity.DataEntity;
+import com.thyago.datastorage.DataStorageContract;
+import com.thyago.datastorage.DataStorageDbHelper;
+import com.thyago.datastorage.OperationFinishedListener;
+import com.thyago.datastorage.data.DataEntity;
+
+import java.util.List;
 
 /**
  * Created by thyago on 6/3/16.
@@ -48,6 +53,15 @@ public class DataModel {
             protected void onPostExecute(Long result) {
                 if (finishedListener != null)
                     finishedListener.onFinish(result != NOT_SAVED);
+            }
+        }.execute();
+    }
+
+    public void findAll(final OperationFinishedListener<List<DataEntity>> finishedListener) {
+        new AsyncTask<Void, Void, List<DataEntity>>() {
+            @Override
+            protected List<DataEntity> doInBackground(Void... params) {
+                return null;
             }
         }.execute();
     }
