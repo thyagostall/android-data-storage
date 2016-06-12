@@ -65,6 +65,9 @@ public class AuthorActivity extends AppCompatActivity {
 
     private void save() {
         AuthorModel model = new AuthorModel(this);
+
+        mEntity.setName(mAuthorName.getText().toString());
+
         model.persist(mEntity, new OperationFinishedListener<Long>() {
             @Override
             public void onFinish(Long result) {

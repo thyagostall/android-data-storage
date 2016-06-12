@@ -10,9 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
+import com.thyago.datastorage.OperationFinishedListener;
 import com.thyago.datastorage.R;
+import com.thyago.datastorage.author.AuthorAdapter;
+import com.thyago.datastorage.author.AuthorEntity;
+import com.thyago.datastorage.author.AuthorModel;
+
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DataActivity extends AppCompatActivity {
 
@@ -27,10 +34,23 @@ public class DataActivity extends AppCompatActivity {
     @BindView(R.id.author)
     AutoCompleteTextView mAuthor;
 
+    private AuthorModel mModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
+
+        ButterKnife.bind(this);
+
+        mModel = new AuthorModel(this);
+        mModel.findAll(new OperationFinishedListener<List<AuthorEntity>>() {
+            @Override
+            public void onFinish(List<AuthorEntity> result) {
+                AuthorAdapter adapter = new AuthorAdapter(getLayoutInflater(), result);
+                mAuthor.setAdapter(adapter);
+            }
+        });
     }
 
     @Override
