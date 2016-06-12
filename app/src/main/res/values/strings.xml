@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Data Storage Example</string>
-    <string name="action_settings">Settings</string>
     <string name="record_created">Random record created.</string>
     <string name="error_on_create_record">Error on create record</string>
+    <string name="insert">Insert</string>
+    <string name="author_name">Author name</string>
+    <string name="save">Save</string>
 </resources>

@@ -1,20 +1,19 @@
 package com.thyago.datastorage;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.thyago.datastorage.author.AuthorActivity;
 import com.thyago.datastorage.entity.SampleDataEntity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class DataStorageActivity extends AppCompatActivity {
 
@@ -23,13 +22,6 @@ public class DataStorageActivity extends AppCompatActivity {
     @BindView(R.id.list_view)
     ListView mListView;
 
-    @BindView(R.id.fab)
-    FloatingActionButton mFab;
-
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-
-    @OnClick(R.id.fab)
     public void fabClick(final View view) {
         SampleDataEntity data = new SampleDataEntity();
         data.setTitle("Some title");
@@ -56,8 +48,6 @@ public class DataStorageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_storage);
         ButterKnife.bind(this);
-
-        setSupportActionBar(mToolbar);
     }
 
     @Override
@@ -69,10 +59,17 @@ public class DataStorageActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_insert:
+                insertItem();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+    }
+
+    public void insertItem() {
+        Intent intent = new Intent(this, AuthorActivity.class);
+        startActivityForResult(intent, AuthorActivity.INSERT_AUTHOR);
     }
 }

@@ -35,7 +35,6 @@ public class SampleDataModel {
                     DataStorageDbHelper dbHelper = new DataStorageDbHelper(mContext);
                     db = dbHelper.getWritableDatabase();
 
-                    db.beginTransaction();
                     result = db.insert(DataStorageContract.SampleDataEntry.TABLE_NAME, null, content);
                 } finally {
                     if (db != null)

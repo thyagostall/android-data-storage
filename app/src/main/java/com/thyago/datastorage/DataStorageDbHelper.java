@@ -37,7 +37,7 @@ public class DataStorageDbHelper extends SQLiteOpenHelper {
     private static final String CREATE_SAMPLE_DATA_AUTHOR =
             String.format(CREATE_TABLE, DataStorageContract.SampleDataAuthorEntry.TABLE_NAME,
                     DataStorageContract.SampleDataAuthorEntry._ID + PRIMARY_KEY + COMMA_SEP +
-                    DataStorageContract.SampleDataAuthorEntry.NAME + TEXT_TYPE + COMMA_SEP
+                    DataStorageContract.SampleDataAuthorEntry.NAME + TEXT_TYPE
             );
 
     private static final String DELETE_SAMPLE_DATA =
