@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.thyago.datastorage.author.AuthorActivity;
-import com.thyago.datastorage.entity.SampleDataEntity;
+import com.thyago.datastorage.entity.DataEntity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,11 +23,11 @@ public class DataStorageActivity extends AppCompatActivity {
     ListView mListView;
 
     public void fabClick(final View view) {
-        SampleDataEntity data = new SampleDataEntity();
+        DataEntity data = new DataEntity();
         data.setTitle("Some title");
         data.setText("Some text");
 
-        SampleDataModel model = new SampleDataModel(this);
+        DataModel model = new DataModel(this);
         model.persist(data, new OperationFinishedListener<Boolean>() {
             @Override
             public void onFinish(Boolean result) {

@@ -1,25 +1,52 @@
 package com.thyago.datastorage.author;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.thyago.datastorage.OperationFinishedListener;
 import com.thyago.datastorage.R;
+import com.thyago.datastorage.DataModel;
+import com.thyago.datastorage.entity.DataEntity;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class AuthorActivity extends AppCompatActivity {
 
     public static final int INSERT_AUTHOR = 0xd1;
     public static final int UPDATE_AUTHOR = 0xd2;
 
+    public static final String AUTHOR_NAME = "author_name";
+    public static final String AUTHOR_ID = "author_id";
+
     private static final String LOG_TAG = AuthorActivity.class.getSimpleName();
+    private AuthorEntity mEntity;
+
+    @BindView(R.id.author_name)
+    EditText mAuthorName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_author);
+
+        ButterKnife.bind(this);
+
+        long authorId = getIntent().getLongExtra(AUTHOR_ID, -1);
+        String authorName = getIntent().getStringExtra(AUTHOR_NAME);
+
+        mEntity = new AuthorEntity();
+        mEntity.setName(authorName);
+        mEntity.setId(authorId);
+
+        mAuthorName.setText(mEntity.getName());
     }
 
     @Override
@@ -41,6 +68,15 @@ public class AuthorActivity extends AppCompatActivity {
     }
 
     private void save() {
-        Log.d(LOG_TAG, "Saving");
+        AuthorModel model = new AuthorModel(this);
+        model.persist(mEntity, new OperationFinishedListener<Long>() {
+            @Override
+            public void onFinish(Long result) {
+                mEntity.setId(result);
+
+                Toast.makeText(AuthorActivity.this, R.string.data_saved, Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
     }
 }

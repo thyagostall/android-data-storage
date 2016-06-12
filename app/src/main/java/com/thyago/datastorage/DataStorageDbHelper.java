@@ -23,28 +23,28 @@ public class DataStorageDbHelper extends SQLiteOpenHelper {
     private static final String COMMA_SEP = ", ";
 
     private static final String CREATE_SAMPLE_DATA =
-            String.format(CREATE_TABLE, DataStorageContract.SampleDataEntry.TABLE_NAME,
-                    DataStorageContract.SampleDataEntry._ID + PRIMARY_KEY + COMMA_SEP +
-                    DataStorageContract.SampleDataEntry.TITLE + TEXT_TYPE + COMMA_SEP +
-                    DataStorageContract.SampleDataEntry.TEXT + TEXT_TYPE + COMMA_SEP +
-                    DataStorageContract.SampleDataEntry.AUTHOR_ID + INTEGER_TYPE + COMMA_SEP +
+            String.format(CREATE_TABLE, DataStorageContract.DataEntry.TABLE_NAME,
+                    DataStorageContract.DataEntry._ID + PRIMARY_KEY + COMMA_SEP +
+                    DataStorageContract.DataEntry.TITLE + TEXT_TYPE + COMMA_SEP +
+                    DataStorageContract.DataEntry.TEXT + TEXT_TYPE + COMMA_SEP +
+                    DataStorageContract.DataEntry.AUTHOR_ID + INTEGER_TYPE + COMMA_SEP +
                     String.format(FOREIGN_KEY,
-                            DataStorageContract.SampleDataEntry.AUTHOR_ID,
-                            DataStorageContract.SampleDataAuthorEntry.TABLE_NAME,
-                            DataStorageContract.SampleDataAuthorEntry._ID
+                            DataStorageContract.DataEntry.AUTHOR_ID,
+                            DataStorageContract.AuthorEntry.TABLE_NAME,
+                            DataStorageContract.AuthorEntry._ID
             ));
 
     private static final String CREATE_SAMPLE_DATA_AUTHOR =
-            String.format(CREATE_TABLE, DataStorageContract.SampleDataAuthorEntry.TABLE_NAME,
-                    DataStorageContract.SampleDataAuthorEntry._ID + PRIMARY_KEY + COMMA_SEP +
-                    DataStorageContract.SampleDataAuthorEntry.NAME + TEXT_TYPE
+            String.format(CREATE_TABLE, DataStorageContract.AuthorEntry.TABLE_NAME,
+                    DataStorageContract.AuthorEntry._ID + PRIMARY_KEY + COMMA_SEP +
+                    DataStorageContract.AuthorEntry.NAME + TEXT_TYPE
             );
 
     private static final String DELETE_SAMPLE_DATA =
-            String.format(DELETE_TABLE, DataStorageContract.SampleDataEntry.TABLE_NAME);
+            String.format(DELETE_TABLE, DataStorageContract.DataEntry.TABLE_NAME);
 
     private static final String DELETE_SAMPLE_DATA_AUTHOR =
-            String.format(DELETE_TABLE, DataStorageContract.SampleDataAuthorEntry.TABLE_NAME);
+            String.format(DELETE_TABLE, DataStorageContract.AuthorEntry.TABLE_NAME);
 
     public DataStorageDbHelper(Context context) {
         super(context, DATABASE_FILENAME, null, DATABASE_VERSION);

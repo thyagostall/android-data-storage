@@ -3,9 +3,10 @@ package com.thyago.datastorage.entity;
 /**
  * Created by thyago on 6/3/16.
  */
-public class SampleDataEntity extends BaseEntity {
+public class DataEntity extends BaseEntity {
     private String title;
     private String text;
+    private int authorId;
 
     public String getTitle() {
         return title;
@@ -21,5 +22,13 @@ public class SampleDataEntity extends BaseEntity {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 }

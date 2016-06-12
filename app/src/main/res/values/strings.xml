@@ -5,4 +5,5 @@
     <string name="insert">Insert</string>
     <string name="author_name">Author name</string>
     <string name="save">Save</string>
+    <string name="data_saved">The data was saved.</string>
 </resources>
