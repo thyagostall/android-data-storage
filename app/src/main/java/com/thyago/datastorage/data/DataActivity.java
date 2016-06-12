@@ -72,6 +72,6 @@ public class DataActivity extends AppCompatActivity {
     }
 
     private void save() {
-        Log.d(LOG_TAG, "saved");
+        Log.d(LOG_TAG, "selected_author=" + mAuthor.getListSelection());
     }
 }
